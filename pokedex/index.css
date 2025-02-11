@@ -16,7 +16,7 @@ nav{
     text-align: center;
     padding-left: 10%;
     display: flex;
-
+    width:100%;
 }
 
 nav input {
@@ -25,4 +25,42 @@ nav input {
 
 nav label{
     padding-left: 10%;
+}
+
+#contenedor_de_pokemons {
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(6, 289px);
+    grid-auto-rows: auto;
+    gap: 30px;
+}
+
+.pokemon{
+    position: relative;
+    display: flex;
+    border-radius: 2%;
+    height: 250px;
+    width: 100%;
+    background-color: rgb(173, 157, 157);
+    flex-direction: row;
+    justify-content: center;
+}
+
+.pokemon > p{
+    position: sticky;
+    align-self: flex-end;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.pokemon > img{
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    align-self: center;
+}
+
+.pokemon:hover{
+    background-color: rgb(184, 13, 13);
+    transform: scale();
 }
