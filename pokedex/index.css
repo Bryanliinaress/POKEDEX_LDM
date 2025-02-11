@@ -26,3 +26,16 @@ nav input {
 nav label{
     padding-left: 10%;
 }
+
+#contedor_de_pokemons {
+    display: grid;
+    grid-template-rows: repeat(4, 2fr);
+    grid-auto-columns: auto;
+    gap: 10px;
+}
+
+.pokemon{
+    height: 200px;
+    width: 150px;
+    background-color: red;
+}
