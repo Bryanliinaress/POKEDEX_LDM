@@ -1,41 +1,88 @@
-header{
+header {
     background-image: url(Img/pokeball.gif);
     background-size: 100%;
     text-align: center;
     width: 100%;
+    animation-duration: 2s;
+    animation-name: slidein;
 }
 
-h1  {
-    font-style: italic;
+header h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 60px;
+    animation-duration: 4s;
+    animation-name: animation;
+    animation-direction: alternate;
 }
 
-nav{
+
+@keyframes animation {
+    from {
+        margin-top: 8%;
+        width: 100%;
+        margin-bottom: 8%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+@keyframes slidein {
+    from {
+        margin-left: 30%;
+        width: 100%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+@keyframes animacionTipo {
+    0% {
+      transform: scale(1); /* Comienza con el tamaño original */
+    }
+    50% {
+      transform: scale(1.2); /* Se agranda un 20% */
+    }
+    100% {
+      transform: scale(0.9); /* Vuelve al tamaño original */
+    }
+}
+
+
+
+#filtros{
     padding-top: 1%;
     padding-bottom: 1%;
-    background-color: yellow;
-    text-align: center;
-    padding-left: 10%;
+    background-color: red;
+    padding-left: 37%;
     display: flex;
-    width:100%;
 }
 
-nav input {
-    padding-right: 5%;
-}
-
-nav label{
+input{
+    margin-left: 1%;
+    text-align: center;
+    padding: 1%;
+    border-radius: 20px;
     padding-left: 10%;
+    padding-right:10% ;
 }
+
+
 
 #contenedor_de_pokemons {
-    padding-top: 10px;
+    padding-top: 2%;
     display: grid;
-    grid-template-columns: repeat(6, 289px);
+    grid-template-columns: repeat(3, 32%);
     grid-auto-rows: auto;
     gap: 30px;
+    padding-left: 3%;
+    padding-right: 3%;
 }
 
-.pokemon{
+.pokemon {
     position: relative;
     display: flex;
     border-radius: 2%;
@@ -44,23 +91,63 @@ nav label{
     background-color: rgb(173, 157, 157);
     flex-direction: row;
     justify-content: center;
+    animation-name: animation;
+    animation-duration: 1s;
 }
 
-.pokemon > p{
+.pokemon>p {
     position: sticky;
     align-self: flex-end;
     font-weight: bold;
     font-size: 20px;
 }
 
-.pokemon > img{
+.pokemon>img {
     position: absolute;
     height: 200px;
     width: 200px;
     align-self: center;
 }
 
-.pokemon:hover{
+.pokemon:hover {
     background-color: rgb(184, 13, 13);
     transform: scale();
 }
+
+#Tipos_Pokemons {
+    padding-top: 2%;
+    display: grid;
+    grid-template-columns: repeat(6, 15%);
+    grid-auto-rows: auto;
+    gap: 30px;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background-color: #323232;
+}
+
+.tipo{
+    position: relative;
+    display: flex;
+    border-radius: 2%;
+    width: 100%;
+    background-color:#323232;
+    flex-direction: row;
+    justify-content: center;
+    animation-name: animation;
+    animation-duration: 1s;
+}
+
+.tipo>img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    align-self: center;
+}
+
+.tipo :hover{
+    animation: animacionTipo 2s infinite;
+    
+}
+
