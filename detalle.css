@@ -1,103 +1,147 @@
-header {
-    background-image: url(Img/pokeball.gif);
-    background-size: 100%;
-    text-align: center;
-    width: 100%;
-    animation-duration: 2s;
-    animation-name: slidein;
-}
-
-header h1 {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 60px;
-    animation-duration: 4s;
-    animation-name: animation;
-    animation-direction: alternate;
-}
-
-
-@keyframes animation {
-    from {
-        margin-top: 8%;
-        width: 100%;
-        margin-bottom: 8%;
-    }
-
-    to {
-        margin-left: 0%;
-        width: 100%;
-    }
-}
-@keyframes slidein {
-    from {
-        margin-left: 30%;
-        width: 100%;
-    }
-
-    to {
-        margin-left: 0%;
-        width: 100%;
-    }
-}
-@keyframes animacionTipo {
-    0% {
-      transform: scale(1); /* Comienza con el tamaño original */
-    }
-    50% {
-      transform: scale(1.2); /* Se agranda un 20% */
-    }
-    100% {
-      transform: scale(0.9); /* Vuelve al tamaño original */
-    }
-}
-@keyframes animacionMarcado {
-    0% {
-        transform: scale(0.9);
-    }
-}
-
-#Tipos_Pokemons {
-    padding-top: 2%;
-    display: grid;
-    grid-template-columns: repeat(6, 15%);
-    grid-auto-rows: auto;
-    gap: 30px;
-    padding-left: 3%;
-    padding-right: 3%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    background-color: #323232;
-}
-
-.tipo{
-    position: relative;
+body{
+    margin: 0;
     display: flex;
-    border-radius: 2%;
     width: 100%;
-    background-color:#323232;
-    flex-direction: row;
-    justify-content: center;
-    animation-name: animation;
-    animation-duration: 1s;
+    height: 100%;
+    flex-direction: column;
 }
 
-.tipo>img {
-    position: absolute;
-    height: 100%;
+#wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+#imagenPokemon{
+    width : 150%;
+    align-self: center;
+    border-radius: 60px;
+}
+
+#principal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    gap :30px;
+}
+
+#detallesPokemones{
+    position:static;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 50px;
+    background-image: url(Img/youtube-video-gif.gif);
+    background-size: 100%;
+    padding-bottom: 15%;
+    
+}
+
+#nombrePokemon{
+    text-transform: capitalize;
+    font-size: 60px;
+    text-shadow: 6px 6px 6px rgb(107, 104, 104);
+}
+
+#descripcionPokemon{
+    white-space: pre-line;
     width: 100%;
     align-self: center;
+    text-align: left;
+    margin: 0%;
+    padding: 2%;
+    font-style: italic;
+    border-radius: 9px; 
+    background-color: rgba(128, 128, 128, 0.238);
+    border: 2px solid ;
 }
 
-.tipo :hover{
-    animation: animacionTipo 2s infinite;
+#evolucionesPokemon{
+    position: absolute;
+    top: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    right: 0%;
 }
 
-a{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 60px;
-    animation-duration: 4s;
-    animation-name: animation;
-    animation-direction: alternate;
-    color: black;
-    text-decoration: none;
+.evolucion{
+    height: 220px;
+    padding-left: 2px;
+    padding-right: 2px;
+    background-color: rgba(128, 128, 128, 0.238);
+
+}
+
+#Home{
+    position:fixed;
+    font-size: 19px;
+    left: 0.3%;
+    top: 0.7%;
+}
+
+
+#habilidadesPokemon{
+    position: absolute;
+    left: 4%;
+    top: 48%;
+    white-space: pre-line;
+    width: 15%;
+    align-self: center;
+    text-align: left;
+    margin: 0%;
+    border-radius: 9px;
+    border: 2px solid  rgb(0, 0, 0);
+    font-style: italic;
+    padding: 2px;
+    background-color: rgba(128, 128, 128, 0.238);
+}
+
+#tablaEstadisticas{
+    position: absolute;
+    left: 4%;
+    top: 20%;
+    white-space: pre-line;
+    width: 15%;
+    align-self: center;
+    text-align: left;
+    margin: 0%;
+    font-style: italic;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius:  9px; ;
+    background-color: rgba(128, 128, 128, 0.238);
+    padding: 2px;
+}
+
+#flechaFotos{
+    height: 50px;
+}
+
+#flechaFder{
+    height: 50px;
+    right: 0%;
+}
+#flechaFiz{
+    left: 0%;
+    height: 50px;
+}
+#EhabilidadesPokemon{
+    position: absolute;
+    left: 4%;
+    top: 45%;
+    white-space: pre-line;
+    width: 15%;
+    align-self: center;
+    text-align: left;
+    margin-left: 5%;
+    border-radius: 9px;
+    font-style: italic;
+    padding-left: 2px;
+
 }
