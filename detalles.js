@@ -153,20 +153,22 @@ async function conseguirPokemonBase(cadena){
 
 async function conseguirEvolucion1(cadena){
     let evolution1Contenedor = document.createElement("div")
-    let evolucion1Nombre = document.createElement("h2")
-    let evolucion1Imagen = document.createElement("img")
     try{
         if(cadena.chain.evolves_to.lenght < 2){
             let evolucion1 = await fetch(`${cadena.chain.evolves_to[0].species.url}`)
             if(evolucion1 != null){
+                evolution1Contenedor = document.createElement("div")
+                let evolucion1Nombre = document.createElement("h2")
+                let evolucion1Imagen = document.createElement("img")
                 let evolucion1Json = await evolucion1.json()
                 let evolucion1URL = await fetch(`${evolucion1Json.varieties[0].pokemon.url}`)
-                let evolucion1URLJson = await evolucion1URL.json()
-                evolucion1Nombre.textContent = evolucion1URLJson.name
-                evolucion1Imagen.src = evolucion1URLJson.sprites.front_default
+                let evolucionURLJson = await evolucion1URL.json()
+                let evolution1Pokemon = document.createElement("div")
+                evolucion1Nombre.textContent = evolucionURLJson.name
+                evolucion1Imagen.src = evolucionURLJson.sprites.front_default
                 evolucion1Imagen.addEventListener("click", () => {
                     detalles.innerHTML = ""
-                    localStorage.setItem("nombrePokemon", evolucion1URLJson.name)
+                    localStorage.setItem("nombrePokemon", evolucionURLJson.name)
                     detallesPokemon()
                 })
                 evolucion1Imagen.style.width = '40%'
@@ -174,26 +176,31 @@ async function conseguirEvolucion1(cadena){
                 evolucion1Nombre.style.textAlign = 'center'
                 evolucion1Imagen.style.display = 'block'
                 evolucion1Imagen.style.margin = '0 auto'
-                evolution1Contenedor.style.border = '2px solid black'
-                evolution1Contenedor.style.borderRadius = '10px'
-                evolution1Contenedor.style.marginRight = '20px'
-                evolution1Contenedor.appendChild(evolucion1Nombre)
-                evolution1Contenedor.appendChild(evolucion1Imagen)
-                evolution1Contenedor.appendChild(await conseguirTipos(evolucion1URLJson))
-                evolution1Contenedor.classList.add("evolucion")
+                evolution1Pokemon.style.border = '2px solid black'
+                evolution1Pokemon.style.borderRadius = '10px'
+                evolution1Pokemon.style.marginRight = '20px'
+                evolution1Pokemon.appendChild(evolucion1Nombre)
+                evolution1Pokemon.appendChild(evolucion1Imagen)
+                evolution1Pokemon.appendChild(await conseguirTipos(evolucionURLJson))
+                evolution1Pokemon.classList.add("evolucion")
+                evolution1Contenedor.appendChild(evolution1Pokemon)
+                evolution1Contenedor.classList.add("contenedorEvolucion")
                 return evolution1Contenedor
             }else{
                 return null
             }
         }else{
+            evolution1Contenedor = document.createElement("div")
             for(let evoluciones of cadena.chain.evolves_to){
                 let evolucion1 = await fetch(`${evoluciones.species.url}`)
                 if(evolucion1 != null){
+                    let evolucion1Nombre = document.createElement("h2")
+                    let evolucion1Imagen = document.createElement("img")
                     let evolucion1Json = await evolucion1.json()
                     let evolucion1URL = await fetch(`${evolucion1Json.varieties[0].pokemon.url}`)
                     let evolucionURLJson = await evolucion1URL.json()
-                    let evolucion1Nombre = document.createElement("h2")
-                    let evolucion1Imagen = document.createElement("img")
+                    console.log(evolucionURLJson)
+                    let evolution1Pokemon = document.createElement("div")
                     evolucion1Nombre.textContent = evolucionURLJson.name
                     evolucion1Imagen.src = evolucionURLJson.sprites.front_default
                     evolucion1Imagen.addEventListener("click", () => {
@@ -206,13 +213,15 @@ async function conseguirEvolucion1(cadena){
                     evolucion1Nombre.style.textAlign = 'center'
                     evolucion1Imagen.style.display = 'block'
                     evolucion1Imagen.style.margin = '0 auto'
-                    evolution1Contenedor.style.border = '2px solid black'
-                    evolution1Contenedor.style.borderRadius = '10px'
-                    evolution1Contenedor.style.marginRight = '20px'
-                    evolution1Contenedor.appendChild(evolucion1Nombre)
-                    evolution1Contenedor.appendChild(evolucion1Imagen)
-                    evolution1Contenedor.appendChild(await conseguirTipos(evolucionURLJson))
-                    evolution1Contenedor.classList.add("evolucion")
+                    evolution1Pokemon.style.border = '2px solid black'
+                    evolution1Pokemon.style.borderRadius = '10px'
+                    evolution1Pokemon.style.marginRight = '20px'
+                    evolution1Pokemon.appendChild(evolucion1Nombre)
+                    evolution1Pokemon.appendChild(evolucion1Imagen)
+                    evolution1Pokemon.appendChild(await conseguirTipos(evolucionURLJson))
+                    evolution1Pokemon.classList.add("evolucion")
+                    evolution1Contenedor.appendChild(evolution1Pokemon)
+                    evolution1Contenedor.classList.add("contenedorEvolucion")
                 }
             }
             return evolution1Contenedor
@@ -265,7 +274,9 @@ async function conseguirTipos(cadena){
     let tiposContenedor = document.createElement("div")
     for(let tipos of cadena.types){
         tipo = document.createElement("img")
+        tipo.id= "tamañoTipo"
         let tipoURL = await fetch(`${tipos.type.url}`)
+
         let tipoJson = await tipoURL.json()
         tipo.src = tipoJson.sprites['generation-viii']['brilliant-diamond-and-shining-pearl'].name_icon
         tiposContenedor.appendChild(tipo)

@@ -69,7 +69,17 @@ body{
     flex-direction: column;
     gap: 30px;
     right: 0%;
+    max-height: 90vh;
+    width: 300px;
+    overflow-y: auto;
 }
+
+.contenedorEvolucion{
+    display: flex;
+    flex-direction: column;
+    gap: 30px
+}
+
 
 .evolucion{
     height: 220px;
@@ -144,4 +154,15 @@ body{
     font-style: italic;
     padding-left: 2px;
 
+}
+
+.tipos{
+    display: flex ;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#tamañoTipo{
+    width: 40%;
+    margin-right: 2px;
 }
