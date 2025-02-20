@@ -89,13 +89,13 @@ async function detallesPokemon(){
     }
     evoluciones.id = "evolucionesPokemon"
     let flechaDerecha = document.createElement("img")
-    flechaDerecha.src = "Img/flechaR.jpg"
+    flechaDerecha.src = "./Img/flechaR.jpg"
     flechaDerecha.id = "flechaFotos"
     flechaDerecha.addEventListener("click", async () => {
         imagen.src = await siguienteImagen();
     })
     let flechaIzquierda = document.createElement("img")
-    flechaIzquierda.src = "Img/flechaL.jpg"
+    flechaIzquierda.src = "./Img/flechaL.jpg"
     flechaIzquierda.id="flechaFotos"
     flechaIzquierda.addEventListener("click", async () => {
         imagen.src = await anteriosImagen();
